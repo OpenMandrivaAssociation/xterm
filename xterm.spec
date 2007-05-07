@@ -3,7 +3,7 @@
 Summary:	%{Summary}
 Name:		xterm
 Version:	225
-Release:	%mkrel 1
+Release:	%mkrel 2
 
 Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
 Source11:	%{name}-16x16.png
@@ -12,7 +12,16 @@ Source13:	%{name}-48x48.png
 Url:		http://dickey.his.com/xterm
 License:	MIT
 Group:		Terminals
-BuildRequires: X11-devel 
+BuildRequires: libxrender-devel
+BuildRequires: libxmu-devel
+BuildRequires: libxext-devel
+BuildRequires: libxt-devel
+BuildRequires: libxau-devel
+BuildRequires: libxdmcp-devel
+BuildRequires: libxp-devel
+BuildRequires: libxaw-devel
+BuildRequires: libxpm-devel
+BuildRequires: libxft-devel
 BuildRequires: libtermcap-devel
 BuildRequires: luit
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
@@ -119,7 +128,7 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
 %files
 %defattr(-,root,root)
-%doc AAA_README_VMS.txt MANIFEST README README.os390
+%doc AAA_README_VMS.txt MANIFEST README README.os390 ctlseqs.txt
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
