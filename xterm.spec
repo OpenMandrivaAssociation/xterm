@@ -1,24 +1,20 @@
-# THIS PACKAGE IS HOSTED AT MANDRIVA SVN
-# PLEASE DO NOT UPLOAD DIRECTLY BEFORE COMMIT
-
 %define	Summary	The standard terminal emulator for the X Window System
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	215
-Release:	%mkrel 6
+Version:	225
+Release:	%mkrel 1
 
-Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tar.bz2
+Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
-Patch1:		xterm-199-alt-meta-mod.patch
-Patch3:		xterm-197-alt-keysym-index.patch
 Url:		http://dickey.his.com/xterm
 License:	MIT
 Group:		Terminals
-BuildRequires:	X11-devel 
+BuildRequires: X11-devel 
 BuildRequires: libtermcap-devel
+BuildRequires: luit
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
@@ -34,8 +30,6 @@ running in the window whenever it is resized.
 
 %prep
 %setup -q
-%patch1 -p1 -b .alt-meta-mod
-%patch3 -p1 -b .alt-keysym-index
 
 %build
 %configure \
@@ -59,6 +53,7 @@ make install appsdir=$RPM_BUILD_ROOT%{_libdir}/X11/app-defaults \
 # for display.
 # luit support is needed for it to work -- pablo
 cat << EOF >> $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/XTerm
+
 *.vt100.font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
 *.vt100.encodingMode: locale
 *.locale: true
