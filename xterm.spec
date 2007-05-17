@@ -3,12 +3,16 @@
 Summary:	%{Summary}
 Name:		xterm
 Version:	225
-Release:	%mkrel 2
+Release:	%mkrel 3
 
 Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
+
+# from http://www.vim.org/scripts/script.php?script_id=1349, public domain
+Source20:   colortest.pl 
+
 Url:		http://dickey.his.com/xterm
 License:	MIT
 Group:		Terminals
@@ -37,14 +41,18 @@ supports terminal resizing capabilities (for example, the SIGWINCH signal in
 systems derived from 4.3bsd), xterm will use the facilities to notify programs
 running in the window whenever it is resized.
 
+The xterm included in this package has support for 256 colors enabled.
+
 %prep
 %setup -q
+cp %{SOURCE20} .
 
 %build
 %configure \
    --enable-wide-chars \
    --x-includes=%{_includedir}/freetype2 \
-   --enable-luit
+   --enable-luit \
+   --enable-256-color
 
 %make
 
@@ -128,7 +136,7 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
 %files
 %defattr(-,root,root)
-%doc AAA_README_VMS.txt MANIFEST README README.os390 ctlseqs.txt
+%doc AAA_README_VMS.txt MANIFEST README README.os390 ctlseqs.txt colortest.pl
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
@@ -137,6 +145,4 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_miconsdir}/xterm-terminal.png
 %{_iconsdir}/xterm-terminal.png
 %{_liconsdir}/xterm-terminal.png
-
-
 
