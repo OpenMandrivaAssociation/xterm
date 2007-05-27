@@ -3,7 +3,7 @@
 Summary:	%{Summary}
 Name:		xterm
 Version:	225
-Release:	%mkrel 3
+Release:	%mkrel 4
 
 Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
 Source11:	%{name}-16x16.png
@@ -26,7 +26,7 @@ BuildRequires: libxp-devel
 BuildRequires: libxaw-devel
 BuildRequires: libxpm-devel
 BuildRequires: libxft-devel
-BuildRequires: libtermcap-devel
+BuildRequires: libncurses-devel
 BuildRequires: luit
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
 Conflicts: XFree86 < 3.3.6-13mdk
@@ -49,6 +49,7 @@ cp %{SOURCE20} .
 
 %build
 %configure \
+   --disable-full-tgetent \
    --enable-wide-chars \
    --x-includes=%{_includedir}/freetype2 \
    --enable-luit \
