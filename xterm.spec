@@ -54,7 +54,8 @@ cp %{SOURCE20} .
    --enable-wide-chars \
    --x-includes=%{_includedir}/freetype2 \
    --enable-luit \
-   --enable-256-color
+   --enable-256-color \
+   --with-app-defaults=%{_libdir}/X11/app-defaults
 
 %make
 
