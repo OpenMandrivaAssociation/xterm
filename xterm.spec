@@ -2,7 +2,7 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	226
+Version:	227
 Release:	%mkrel 1
 
 Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
