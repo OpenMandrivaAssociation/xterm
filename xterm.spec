@@ -2,11 +2,10 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	227
+Version:	229
 Release:	%mkrel 1
-
-Source0:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz
-Source1:	ftp://dickey.his.com/xterm/%{name}-%{version}.tgz.asc
+Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
+Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
@@ -14,7 +13,7 @@ Source13:	%{name}-48x48.png
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
 Source20:   colortest.pl 
 
-Url:		http://dickey.his.com/xterm
+Url:		http://invisible-island.net/xterm/
 License:	MIT
 Group:		Terminals
 BuildRequires: libxrender-devel
@@ -89,7 +88,7 @@ Icon=xterm-terminal
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=X-MandrivaLinux-System-Terminals;TerminalEmulator;System;
+Categories=TerminalEmulator;System;
 EOF
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
@@ -141,4 +140,3 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_libdir}/X11/app-defaults/*
 %_datadir/applications/mandriva-*
 %{_iconsdir}/hicolor/*/apps/xterm-terminal.png
-
