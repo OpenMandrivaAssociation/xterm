@@ -3,7 +3,7 @@
 Summary:	%{Summary}
 Name:		xterm
 Version:	229
-Release:	%mkrel 1
+Release:	%mkrel 2
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
@@ -88,7 +88,7 @@ Icon=xterm-terminal
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=TerminalEmulator;System;
+Categories=TerminalEmulator;System;Utility;
 EOF
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
