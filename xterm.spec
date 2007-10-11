@@ -134,7 +134,7 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
 %files
 %defattr(-,root,root)
-%doc AAA_README_VMS.txt MANIFEST README README.os390 ctlseqs.txt colortest.pl
+%doc ctlseqs.txt colortest.pl
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
