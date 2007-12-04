@@ -31,7 +31,7 @@ BuildRequires: luit
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
-Requires(post,postun):	/usr/sbin/update-alternatives
+Requires(post,postun):	update-alternatives
 
 %description
 The XTerm program is the standard terminal emulator for the X Window System. It
