@@ -28,7 +28,6 @@ BuildRequires: libxpm-devel
 BuildRequires: libxft-devel
 BuildRequires: libncurses-devel
 BuildRequires: luit
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
 Requires(post,postun):	update-alternatives
