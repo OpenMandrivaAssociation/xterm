@@ -2,8 +2,8 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	229
-Release:	%mkrel 3
+Version:	230
+Release:	%mkrel 1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
@@ -11,7 +11,7 @@ Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
 
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
-Source20:   colortest.pl 
+Source20:   colortest.pl
 
 Url:		http://invisible-island.net/xterm/
 License:	MIT
