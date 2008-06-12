@@ -123,13 +123,17 @@ chmod a+rx $r%{_bindir}/xterm
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%if %mdkversion < 200900
 %update_menus
 %update_icon_cache hicolor
+%endif
 update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
 %postun
+%if %mdkversion < 200900
 %clean_menus
 %update_icon_cache hicolor
+%endif
 [[ "$1" = "0" ]] && update-alternatives --remove xvt %{_bindir}/xterm || :
 
 %files
