@@ -16,16 +16,12 @@ Source20:   colortest.pl
 Url:		http://invisible-island.net/xterm/
 License:	MIT
 Group:		Terminals
-BuildRequires: libxrender-devel
-BuildRequires: libxmu-devel
-BuildRequires: libxext-devel
-BuildRequires: libxt-devel
-BuildRequires: libxau-devel
-BuildRequires: libxdmcp-devel
-BuildRequires: libxp-devel
-BuildRequires: libxaw-devel
-BuildRequires: libxpm-devel
-BuildRequires: libxft-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libxaw-devel
+BuildRequires:	libxft-devel
+BuildRequires:	libxmu-devel
+BuildRequires:	libxt-devel
+BuildRequires:	fontconfig-devel
 BuildRequires: libncurses-devel
 BuildRequires: luit
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
@@ -48,7 +44,7 @@ The xterm included in this package has support for 256 colors enabled.
 cp %{SOURCE20} .
 
 %build
-%configure \
+%configure2_5x \
    --disable-full-tgetent \
    --enable-wide-chars \
    --x-includes=%{_includedir}/freetype2 \
