@@ -2,8 +2,8 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	250
-Release:	%mkrel 2
+Version:	251
+Release:	%mkrel 1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
@@ -12,9 +12,6 @@ Source13:	%{name}-48x48.png
 
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
 Source20:   colortest.pl
-
-# Patch by Thomas Dickey in #54531
-Patch0:		xterm-250a.patch
 
 Url:		http://invisible-island.net/xterm/
 License:	MIT
@@ -44,7 +41,6 @@ The xterm included in this package has support for 256 colors enabled.
 
 %prep
 %setup -q
-%patch0 -p1
 cp %{SOURCE20} .
 
 %build
