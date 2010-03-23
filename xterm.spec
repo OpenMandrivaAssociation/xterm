@@ -2,7 +2,7 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	255
+Version:	256
 Release:	%mkrel 1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
