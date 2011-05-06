@@ -3,7 +3,7 @@
 Summary:	%{Summary}
 Name:		xterm
 Version:	267
-Release:	%mkrel 1
+Release:	%mkrel 2
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
