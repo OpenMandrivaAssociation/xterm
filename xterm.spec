@@ -79,6 +79,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=XTerm
 Comment=%Summary
+Comment[ru]=Стандартный эмулятор терминала для X
 Exec=%{name} -name Terminal
 Icon=xterm-terminal
 Terminal=false
