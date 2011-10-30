@@ -2,8 +2,8 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	267
-Release:	%mkrel 2
+Version:	276
+Release:	%mkrel 1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
@@ -56,7 +56,7 @@ cp %{SOURCE20} .
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+make DESTDIR=%{buildroot} install
 
 # NOTE: encodingMode: locale means to follow the charset encoding of the
 # locale. A quite complete unicode font is set as the default (instead of the
@@ -65,7 +65,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 # locale: true means to use luit to convert locale encoding to unicode
 # for display.
 # luit support is needed for it to work -- pablo
-cat << EOF >> $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/XTerm
+cat << EOF >> %{buildroot}%{_libdir}/X11/app-defaults/XTerm
 
 *.vt100.font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
 *.vt100.encodingMode: locale
@@ -74,11 +74,11 @@ cat << EOF >> $RPM_BUILD_ROOT%{_libdir}/X11/app-defaults/XTerm
 *.backarrowKeyIsErase: on
 EOF
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=XTerm
-Comment=%Summary
+Comment=%{Summary}
 Comment[ru]=Стандартный эмулятор терминала для X
 Exec=%{name} -name Terminal
 Icon=xterm-terminal
@@ -89,15 +89,15 @@ Categories=TerminalEmulator;System;Utility;
 EOF
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
-	rm -f $RPM_BUILD_ROOT%{_datadir}/pixmaps/$xpm
+	rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
 done
-mkdir -p $RPM_BUILD_ROOT%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
 install -m 644 %{_sourcedir}/xterm-16x16.png \
-	$RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/xterm-terminal.png
+	%{buildroot}%{_iconsdir}/hicolor/16x16/apps/xterm-terminal.png
 install -m 644 %{_sourcedir}/xterm-32x32.png \
-	$RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/xterm-terminal.png
+	%{buildroot}%{_iconsdir}/hicolor/32x32/apps/xterm-terminal.png
 install -m 644 %{_sourcedir}/xterm-48x48.png \
-	$RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/xterm-terminal.png
+	%{buildroot}%{_iconsdir}/hicolor/48x48/apps/xterm-terminal.png
 
 %if 0
 ## strange, if xterm isn't launched with -name xxxx parameter it doesn't
@@ -139,5 +139,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
-%_datadir/applications/mandriva-*
+%{_datadir}/applications/mandriva-*
 %{_iconsdir}/hicolor/*/apps/xterm-terminal.png
