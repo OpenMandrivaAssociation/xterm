@@ -55,7 +55,7 @@ cp %{SOURCE20} .
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
 # NOTE: encodingMode: locale means to follow the charset encoding of the
@@ -104,8 +104,8 @@ install -m 644 %{_sourcedir}/xterm-48x48.png \
 ## take in account the ressources --> wrong font in unicode mode --> segfault
 ## there is not time to fix the sources; using a script to ensure there
 ## is always a -nae xxxx used (pablo)
-mv $RPM_BUILD_ROOT%{_bindir}/xterm $RPM_BUILD_ROOT%{_bindir}/xterm.real
-cat << EOF >> $RPM_BUILD_ROOT%{_bindir}/xterm
+mv %{buildroot}%{_bindir}/xterm %{buildroot}%{_bindir}/xterm.real
+cat << EOF >> %{buildroot}%{_bindir}/xterm
 #!/bin/bash
 
 if echo "\$@" | grep -- '-name' >&/dev/null ; then
@@ -117,7 +117,7 @@ chmod a+rx $r%{_bindir}/xterm
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %if %mdkversion < 200900
