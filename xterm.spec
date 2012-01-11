@@ -2,8 +2,8 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	276
-Release:	%mkrel 1
+Version:	277
+Release:	1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
@@ -24,7 +24,6 @@ BuildRequires:	libxt-devel
 BuildRequires:	fontconfig-devel
 BuildRequires: libncurses-devel
 BuildRequires: luit
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{version}-buildroot
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
 Requires(post,postun):	update-alternatives
@@ -55,7 +54,6 @@ cp %{SOURCE20} .
 %make
 
 %install
-rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
 # NOTE: encodingMode: locale means to follow the charset encoding of the
@@ -116,25 +114,13 @@ EOF
 chmod a+rx $r%{_bindir}/xterm
 %endif
 
-%clean
-rm -rf %{buildroot}
-
 %post
-%if %mdkversion < 200900
-%update_menus
-%update_icon_cache hicolor
-%endif
 update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
 %postun
-%if %mdkversion < 200900
-%clean_menus
-%update_icon_cache hicolor
-%endif
 [[ "$1" = "0" ]] && update-alternatives --remove xvt %{_bindir}/xterm || :
 
 %files
-%defattr(-,root,root)
 %doc ctlseqs.txt colortest.pl
 %{_bindir}/*
 %{_mandir}/*/*
