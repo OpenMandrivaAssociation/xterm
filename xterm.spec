@@ -2,7 +2,7 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	277
+Version:	278
 Release:	1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
