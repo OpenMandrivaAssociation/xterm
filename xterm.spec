@@ -2,7 +2,7 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	278
+Version:	279
 Release:	1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
@@ -22,8 +22,8 @@ BuildRequires:	libxft-devel
 BuildRequires:	libxmu-devel
 BuildRequires:	libxt-devel
 BuildRequires:	fontconfig-devel
-BuildRequires: libncurses-devel
-BuildRequires: luit
+BuildRequires:	ncurses-devel
+BuildRequires:	luit
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
 Requires(post,postun):	update-alternatives
