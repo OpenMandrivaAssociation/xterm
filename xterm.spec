@@ -2,7 +2,7 @@
 
 Summary:	%{Summary}
 Name:		xterm
-Version:	279
+Version:	281
 Release:	1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
@@ -90,11 +90,11 @@ for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
 	rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
 done
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
-install -m 644 %{_sourcedir}/xterm-16x16.png \
+install -m 644 %{SOURCE11} \
 	%{buildroot}%{_iconsdir}/hicolor/16x16/apps/xterm-terminal.png
-install -m 644 %{_sourcedir}/xterm-32x32.png \
+install -m 644 %{SOURCE12} \
 	%{buildroot}%{_iconsdir}/hicolor/32x32/apps/xterm-terminal.png
-install -m 644 %{_sourcedir}/xterm-48x48.png \
+install -m 644 %{SOURCE13} \
 	%{buildroot}%{_iconsdir}/hicolor/48x48/apps/xterm-terminal.png
 
 %if 0
