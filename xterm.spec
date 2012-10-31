@@ -16,13 +16,13 @@ Source20:   colortest.pl
 Url:		http://invisible-island.net/xterm/
 License:	MIT
 Group:		Terminals
-BuildRequires:	libx11-devel
-BuildRequires:	libxaw-devel
-BuildRequires:	libxft-devel
-BuildRequires:	libxmu-devel
-BuildRequires:	libxt-devel
-BuildRequires:	fontconfig-devel
-BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xaw7)
+BuildRequires:	pkgconfig(xft)
+BuildRequires:	pkgconfig(xmu)
+BuildRequires:	pkgconfig(xt)
+BuildRequires:	pkgconfig(fontconfig)
+BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	luit
 Conflicts: XFree86 < 3.3.6-13mdk
 Requires: luit
