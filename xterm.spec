@@ -1,8 +1,6 @@
-%define	Summary	The standard terminal emulator for the X Window System
-
-Summary:	%{Summary}
+Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	281
+Version:	286
 Release:	1
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
@@ -11,7 +9,7 @@ Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
 
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
-Source20:   colortest.pl
+Source20:	colortest.pl
 
 Url:		http://invisible-island.net/xterm/
 License:	MIT
@@ -24,8 +22,7 @@ BuildRequires:	pkgconfig(xt)
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	luit
-Conflicts: XFree86 < 3.3.6-13mdk
-Requires: luit
+Requires:	luit
 Requires(post,postun):	update-alternatives
 
 %description
@@ -54,7 +51,7 @@ cp %{SOURCE20} .
 %make
 
 %install
-make DESTDIR=%{buildroot} install
+%makeinstall_std
 
 # NOTE: encodingMode: locale means to follow the charset encoding of the
 # locale. A quite complete unicode font is set as the default (instead of the
@@ -126,4 +123,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/mandriva-*
+%{_datadir}/pixmaps/*xpm
 %{_iconsdir}/hicolor/*/apps/xterm-terminal.png
