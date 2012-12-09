@@ -1,28 +1,26 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	286
+Version:	287
 Release:	1
+License:	MIT
+Group:		Terminals
+Url:		http://invisible-island.net/xterm/
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
 Source1:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz.asc
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
-
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
-Source20:	colortest.pl
-
-Url:		http://invisible-island.net/xterm/
-License:	MIT
-Group:		Terminals
+Source20:   colortest.pl
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xft)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xt)
 BuildRequires:	pkgconfig(fontconfig)
-BuildRequires:	pkgconfig(ncursesw)
-BuildRequires:	luit
-Requires:	luit
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires: luit
+Requires: luit
 Requires(post,postun):	update-alternatives
 
 %description
@@ -73,7 +71,7 @@ mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=XTerm
-Comment=%{Summary}
+Comment=Standard terminal emulator
 Comment[ru]=Стандартный эмулятор терминала для X
 Exec=%{name} -name Terminal
 Icon=xterm-terminal
@@ -94,23 +92,6 @@ install -m 644 %{SOURCE12} \
 install -m 644 %{SOURCE13} \
 	%{buildroot}%{_iconsdir}/hicolor/48x48/apps/xterm-terminal.png
 
-%if 0
-## strange, if xterm isn't launched with -name xxxx parameter it doesn't
-## take in account the ressources --> wrong font in unicode mode --> segfault
-## there is not time to fix the sources; using a script to ensure there
-## is always a -nae xxxx used (pablo)
-mv %{buildroot}%{_bindir}/xterm %{buildroot}%{_bindir}/xterm.real
-cat << EOF >> %{buildroot}%{_bindir}/xterm
-#!/bin/bash
-
-if echo "\$@" | grep -- '-name' >&/dev/null ; then
-	 exec %{_bindir}/xterm.real "\$@"
-else exec %{_bindir}/xterm.real -name Terminal "\$@"
-fi
-EOF
-chmod a+rx $r%{_bindir}/xterm
-%endif
-
 %post
 update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 
@@ -123,5 +104,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/mandriva-*
-%{_datadir}/pixmaps/*xpm
 %{_iconsdir}/hicolor/*/apps/xterm-terminal.png
+%{_datadir}/pixmaps/*.xpm
