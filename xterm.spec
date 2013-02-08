@@ -1,6 +1,6 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	287
+Version:	289
 Release:	1
 License:	MIT
 Group:		Terminals
@@ -11,16 +11,16 @@ Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
-Source20:   colortest.pl
+Source20:		colortest.pl
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xft)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xt)
 BuildRequires:	pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(ncurses)
-BuildRequires: luit
-Requires: luit
+BuildRequires:	pkgconfig(ncurses)
+BuildRequires:	luit
+Requires:	luit
 Requires(post,postun):	update-alternatives
 
 %description
