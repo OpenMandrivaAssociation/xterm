@@ -1,5 +1,7 @@
+removed_sources:
+  xterm-289.tgz: f144a82d75189e17ac085a5c89bf3f1c47c1647d
 sources:
   xterm-16x16.png: 570fa8200688048d923a47be5f8db2e06b98f086
-  xterm-289.tgz: f144a82d75189e17ac085a5c89bf3f1c47c1647d
+  xterm-293.tgz: 99a7e7b6d3cf7f576faa81aade80e691a56c7859
   xterm-32x32.png: c2d985fd7f53215ac5a24dc79c72e98fa2c89163
   xterm-48x48.png: 5673fbd62dc797cd16e77b4b339c3f4314502797
