@@ -6,7 +6,7 @@ License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
-Source09:	%{name}.desktop
+Source9:	%{name}.desktop
 Source10:	failsafe.desktop
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
@@ -75,7 +75,7 @@ EOF
 
 # (tpg) install desktop entry
 mkdir -p %{buildroot}%{_datadir}/applications
-install -m 644 %{SOURCE09} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 644 %{SOURCE9} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # (tpg) use xterm as failsafe for xsession
 mkdir -p %{buildroot}%{_datadir}/xsessions
