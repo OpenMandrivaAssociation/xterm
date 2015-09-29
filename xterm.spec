@@ -1,16 +1,18 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
 Version:	320
-Release:	1
+Release:	2
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
+Source09:	%{name}.desktop
+Source10:	failsafe.desktop
 Source11:	%{name}-16x16.png
 Source12:	%{name}-32x32.png
 Source13:	%{name}-48x48.png
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
-Source20:		colortest.pl
+Source20:	colortest.pl
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xft)
@@ -37,13 +39,15 @@ The xterm included in this package has support for 256 colors enabled.
 cp %{SOURCE20} .
 
 %build
-%configure2_5x \
+%configure \
    --disable-full-tgetent \
    --enable-wide-chars \
    --x-includes=%{_includedir}/freetype2 \
    --enable-luit \
    --enable-256-color \
-   --with-app-defaults=%{_libdir}/X11/app-defaults
+   --with-app-defaults=%{_libdir}/X11/app-defaults \
+   --with-icon-theme=hicolor \
+   --with-icondir=%{_iconsdir}
 
 %make
 
@@ -64,21 +68,18 @@ cat << EOF >> %{buildroot}%{_libdir}/X11/app-defaults/XTerm
 *.locale: true
 *.PtyInitialErase: on
 *.backarrowKeyIsErase: on
+*.allowFontOps: false
+*.allowTcapOps: false
+*.disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop
 EOF
 
+# (tpg) install desktop entry
 mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=XTerm
-Comment=Standard terminal emulator
-Comment[ru]=Стандартный эмулятор терминала для X
-Exec=%{name} -name Terminal
-Icon=xterm-terminal
-Terminal=false
-Type=Application
-StartupNotify=true
-Categories=TerminalEmulator;System;Utility;
-EOF
+install -m 644 %{SOURCE09} %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+# (tpg) use xterm as failsafe for xsession
+mkdir -p %{buildroot}%{_datadir}/xsessions
+install -m 644 %{SOURCE10} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
 	rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
@@ -102,6 +103,7 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_bindir}/*
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
-%{_datadir}/applications/mandriva-*
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/xsessions/failsafe.desktop
 %{_iconsdir}/hicolor/*/apps/xterm-terminal.png
 %{_datadir}/pixmaps/*.xpm
