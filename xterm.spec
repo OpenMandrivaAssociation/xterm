@@ -6,11 +6,8 @@ License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
 Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
-Source9:	%{name}.desktop
-Source10:	failsafe.desktop
-Source11:	%{name}-16x16.png
-Source12:	%{name}-32x32.png
-Source13:	%{name}-48x48.png
+Source1:	%{name}.desktop
+Source2:	failsafe.desktop
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
 Source20:	colortest.pl
 BuildRequires:	pkgconfig(x11)
@@ -75,22 +72,15 @@ EOF
 
 # (tpg) install desktop entry
 mkdir -p %{buildroot}%{_datadir}/applications
-install -m 644 %{SOURCE9} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # (tpg) use xterm as failsafe for xsession
 mkdir -p %{buildroot}%{_datadir}/xsessions
-install -m 644 %{SOURCE10} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
+install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
 	rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
 done
-mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
-install -m 644 %{SOURCE11} \
-	%{buildroot}%{_iconsdir}/hicolor/16x16/apps/xterm-terminal.png
-install -m 644 %{SOURCE12} \
-	%{buildroot}%{_iconsdir}/hicolor/32x32/apps/xterm-terminal.png
-install -m 644 %{SOURCE13} \
-	%{buildroot}%{_iconsdir}/hicolor/48x48/apps/xterm-terminal.png
 
 %post
 update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
@@ -105,5 +95,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/xsessions/failsafe.desktop
-%{_iconsdir}/hicolor/*/apps/xterm-terminal.png
+%{_iconsdir}/hicolor/*/apps/xterm-color.*g
 %{_datadir}/pixmaps/*.xpm
