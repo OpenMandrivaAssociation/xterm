@@ -1,4 +1,4 @@
-[Desktop entry]
+[Desktop Entry]
 Name=Failsafe X session
 Comment=This X session provides a fallback to a single xterm
 Exec=/usr/bin/xterm
