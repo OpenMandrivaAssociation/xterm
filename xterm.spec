@@ -1,6 +1,6 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	325
+Version:	326
 Release:	1
 License:	MIT
 Group:		Terminals
