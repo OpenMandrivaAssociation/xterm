@@ -1,6 +1,6 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	326
+Version:	330
 Release:	1
 License:	MIT
 Group:		Terminals
@@ -79,7 +79,7 @@ mkdir -p %{buildroot}%{_datadir}/xsessions
 install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
-	rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
+    rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
 done
 
 %post
