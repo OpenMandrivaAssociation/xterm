@@ -32,7 +32,7 @@ running in the window whenever it is resized.
 The xterm included in this package has support for 256 colors enabled.
 
 %prep
-%setup -q
+%setup -q %{name}-%{version}
 cp %{SOURCE20} .
 
 %build
