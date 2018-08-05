@@ -95,5 +95,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/xsessions/failsafe.desktop
-%{_iconsdir}/hicolor/*/apps/xterm-color.*g
+%{_iconsdir}/hicolor/*/apps/*xterm*.*
 %{_datadir}/pixmaps/*.xpm
