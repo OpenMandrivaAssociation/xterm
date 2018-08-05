@@ -1,11 +1,11 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	330
+Version:	333
 Release:	1
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
-Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
+Source0:	ftp://ftp.invisible-island.net/%{name}/%{name}.tar.gz
 Source1:	%{name}.desktop
 Source2:	failsafe.desktop
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
@@ -32,7 +32,7 @@ running in the window whenever it is resized.
 The xterm included in this package has support for 256 colors enabled.
 
 %prep
-%setup -q
+%setup -q %{name}-%{version}
 cp %{SOURCE20} .
 
 %build
@@ -95,5 +95,5 @@ update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/xsessions/failsafe.desktop
-%{_iconsdir}/hicolor/*/apps/xterm-color.*g
+%{_iconsdir}/hicolor/*/apps/*xterm*.*
 %{_datadir}/pixmaps/*.xpm
