@@ -1,11 +1,11 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	330
+Version:	333
 Release:	1
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
-Source0:	ftp://invisible-island.net/xterm/%{name}-%{version}.tgz
+Source0:	ftp://ftp.invisible-island.net/%{name}/%{name}.tar.gz
 Source1:	%{name}.desktop
 Source2:	failsafe.desktop
 # from http://www.vim.org/scripts/script.php?script_id=1349, public domain
