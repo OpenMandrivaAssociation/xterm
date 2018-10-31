@@ -1,7 +1,7 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
 Version:	333
-Release:	1
+Release:	2
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
