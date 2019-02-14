@@ -1,6 +1,6 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
-Version:	343
+Version:	344
 Release:	1
 License:	MIT
 Group:		Terminals
@@ -46,10 +46,10 @@ cp %{SOURCE20} .
    --with-icon-theme=hicolor \
    --with-icondir=%{_iconsdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # NOTE: encodingMode: locale means to follow the charset encoding of the
 # locale. A quite complete unicode font is set as the default (instead of the
