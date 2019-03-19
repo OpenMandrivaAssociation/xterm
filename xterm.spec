@@ -1,7 +1,7 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
 Version:	344
-Release:	1
+Release:	2
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
@@ -72,7 +72,7 @@ EOF
 
 # (tpg) install desktop entry
 mkdir -p %{buildroot}%{_datadir}/applications
-install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # (tpg) use xterm as failsafe for xsession
 mkdir -p %{buildroot}%{_datadir}/xsessions
