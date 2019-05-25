@@ -64,4 +64,4 @@ Icon=xterm-color
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=TerminalEmulator;System;Utility;X-MandrivaLinux-More;
+Categories=TerminalEmulator;System;Utility;X-KDE-More;
