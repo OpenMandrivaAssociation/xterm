@@ -1,7 +1,7 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
 Version:	365
-Release:	1
+Release:	2
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
@@ -19,7 +19,6 @@ BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	luit
 Requires:	luit
-Requires(post,postun):	update-alternatives
 
 %description
 The XTerm program is the standard terminal emulator for the X Window System. It
@@ -81,12 +80,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
     rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
 done
-
-%post
-update-alternatives --install %{_bindir}/xvt xvt %{_bindir}/xterm 18 || :
-
-%postun
-[[ "$1" = "0" ]] && update-alternatives --remove xvt %{_bindir}/xterm || :
 
 %files
 %doc ctlseqs.txt colortest.pl
