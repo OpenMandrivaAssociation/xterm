@@ -1,7 +1,7 @@
 Summary:	The standard terminal emulator for the X Window System
 Name:		xterm
 Version:	379
-Release:	1
+Release:	2
 License:	MIT
 Group:		Terminals
 Url:		http://invisible-island.net/xterm/
@@ -74,8 +74,8 @@ mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # (tpg) use xterm as failsafe for xsession
-mkdir -p %{buildroot}%{_datadir}/xsessions
-install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
+#mkdir -p %{buildroot}%{_datadir}/xsessions
+#install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
     rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
@@ -87,6 +87,6 @@ done
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/xsessions/failsafe.desktop
+#{_datadir}/xsessions/failsafe.desktop
 %{_iconsdir}/hicolor/*/apps/*xterm*.*
 %{_datadir}/pixmaps/*.xpm
