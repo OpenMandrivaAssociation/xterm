@@ -19,6 +19,15 @@ BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	luit
 Requires:	luit
+BuildSystem:	autotools
+BuildOption:	--disable-full-tgetent
+BuildOption:	--enable-wide-chars
+BuildOption:	--x-includes=%{_includedir}/freetype2
+BuildOption:	--enable-luit
+BuildOption:	--enable-256-color
+BuildOption:	--with-app-defaults=%{_libdir}/X11/app-defaults
+BuildOption:	--with-icon-theme=hicolor
+BuildOption:	--with-icondir=%{_iconsdir}
 
 %description
 The XTerm program is the standard terminal emulator for the X Window System. It
@@ -30,26 +39,10 @@ running in the window whenever it is resized.
 
 The xterm included in this package has support for 256 colors enabled.
 
-%prep
-%setup -q %{name}-%{version}
+%prep -a
 cp %{SOURCE20} .
 
-%build
-%configure \
-   --disable-full-tgetent \
-   --enable-wide-chars \
-   --x-includes=%{_includedir}/freetype2 \
-   --enable-luit \
-   --enable-256-color \
-   --with-app-defaults=%{_libdir}/X11/app-defaults \
-   --with-icon-theme=hicolor \
-   --with-icondir=%{_iconsdir}
-
-%make_build
-
-%install
-%make_install
-
+%install -a
 # NOTE: encodingMode: locale means to follow the charset encoding of the
 # locale. A quite complete unicode font is set as the default (instead of the
 # very poor "fixed" one). a quick cat is used instead of patching the sources;
@@ -74,8 +67,8 @@ mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # (tpg) use xterm as failsafe for xsession
-#mkdir -p %{buildroot}%{_datadir}/xsessions
-#install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
+mkdir -p %{buildroot}%{_datadir}/xsessions
+install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/failsafe.desktop
 
 for xpm in xterm{-color_32x32,-color_48x48,_32x32,_48x48}.xpm; do
     rm -f %{buildroot}%{_datadir}/pixmaps/$xpm
@@ -87,6 +80,6 @@ done
 %{_mandir}/*/*
 %{_libdir}/X11/app-defaults/*
 %{_datadir}/applications/%{name}.desktop
-#{_datadir}/xsessions/failsafe.desktop
+%{_datadir}/xsessions/failsafe.desktop
 %{_iconsdir}/hicolor/*/apps/*xterm*.*
 %{_datadir}/pixmaps/*.xpm
