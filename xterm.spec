@@ -4,7 +4,7 @@ Version:	394
 Release:	1
 License:	MIT
 Group:		Terminals
-Url:		http://invisible-island.net/xterm/
+Url:		https://invisible-island.net/xterm/
 Source0:	https://invisible-mirror.net/archives/xterm/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
 Source2:	failsafe.desktop
